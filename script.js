@@ -42,7 +42,7 @@ if(!quote.author) {
 }
 
 // Get quotes from API
-async function getQuotes() {
+async function getQuote() {
     loading();
     const apiUrl = 'https://jacintodesign.github.io/quotes-api/data/quotes.json'
     try {
@@ -50,7 +50,8 @@ async function getQuotes() {
         apiQuotes = await response.json();
         newQuote()
     } catch (error) {
-// Catch Error Here
+        console.log(error);
+        getQuote();
     }
 }
 
@@ -65,4 +66,4 @@ newQuoteBttn.addEventListener('click', newQuote);
 twitterBttn.addEventListener('click', tweetQuote)
 
 // On load
-getQuotes();
+getQuote();
